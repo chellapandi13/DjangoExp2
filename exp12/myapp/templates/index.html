@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Applications using Django Framework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1, h2, h3, h4 {
+            color: #343a40;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        h1 { font-size: 32px; font-weight: bold; }
+        h2 { font-size: 26px; }
+        h3 { font-size: 22px; margin-top: 30px; }
+        h4 { font-size: 20px; margin-bottom: 20px; font-style: italic; }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 90%;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        p { font-size: 18px; color: #343a40; margin-top: 15px; }
+        ul { list-style-type: none; padding: 0; text-align: left; }
+        ul li {
+            font-size: 16px;
+            color: #495057;
+            padding: 5px 0;
+        }
+        ul li::before {
+            content: "•";
+            color: #007bff;
+            font-weight: bold;
+            width: 1em;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kamaraj College of Engineering and Technology</h1>
+    <h2>Web Applications using Django Framework</h2>
+    <h3>TR Chellapandi</h3>
+    <h4>Creating and Working with Template</h4>
+
+    <div class="form-container">
+        <h3>ODD or EVEN Checker</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="number" placeholder="Enter a number">
+            <button type="submit">Check</button>
+        </form>
+        <p>{{ result }}</p>
+    </div>
+
+    <div class="form-container">
+        <h3>Name Filter</h3>
+        <form method="POST" action="/myapp/filter/">
+            {% csrf_token %}
+            <input type="text" name="char" placeholder="Enter a character">
+            <button type="submit">Search</button>
+        </form>
+        <ul>
+            {% for name in filtered_names %}
+                <li>{{ name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
